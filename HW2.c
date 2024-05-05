@@ -232,21 +232,9 @@ int main() {
                 step5();
                 break;
             default:
+            	printf("錯誤的選項！請重新輸入。\n");
                 break;
         }
-        
     } while (1);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    return 0;
 }
