@@ -48,6 +48,7 @@ int check() {
 
     do {
         printf("請輸入4個數字的密碼：");
+        fflush(stdin);
         scanf("%d", &pass);
         // 檢查密碼是否正確
         if(pass == 2024) {
@@ -87,7 +88,7 @@ void step2(){
 void step3() {
     char ip;
     printf("請輸入一個字元（a到n之間）：");
-    scanf(" %c", &ip);
+    scanf("%c",&ip);
     
     if (ip<'a'||ip>'n') {
         printf("錯誤的輸入！請重新輸入。\n");
@@ -95,17 +96,18 @@ void step3() {
     }
     system("cls"); // 清除螢幕
 
-    int ro=ip-'a'+1; // 計算需要打印的行數
+    int ro=ip-'a'+1; // 計算打印的行數
     
-    int i=1,j=1;
+    int i=1;
     for (i;i<=ro;i++) {
-        // 打印空格
-        for (j;j<=ro-i;j++) {
+        char ch=ip-i+1;
+		int j=1;
+		// 打印空格
+        for (j;j<=ro-i;j++){
             printf("  ");
         }
-        // 打印字母
-        char ch=ip-i+1;
-        for (ch;ch<=ip;ch++) {
+		// 打印字母
+        for (ch;ch<=ip;ch++){
             printf("%c ",ch);
         }
         printf("\n");
@@ -115,8 +117,11 @@ void step3() {
     getch(); // 等待用戶輸入任意鍵
 
 }
-
-
+/*
+  c
+ bc
+abc
+*/
 
 // 步驟4：顯示乘法表
 void step4(){
