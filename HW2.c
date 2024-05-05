@@ -83,8 +83,7 @@ void step2(){
 
 
 
-
-
+// 步驟3：顯示直角三角形
 void step3() {
     char ip;
     printf("請輸入一個字元（a到n之間）：");
@@ -117,7 +116,7 @@ void step3() {
 
 }
 
-
+// 步驟4：顯示乘法表
 
 
 
@@ -152,7 +151,7 @@ int main() {
         char ch;
         printf("請輸入選項：");
         scanf(" %c", &ch);
-		 // 步驟4：根據使用者選擇執行相應的操作
+		 //根據使用者選擇執行相應的操作
         switch (ch) {
             case 'a':
             case 'A':
