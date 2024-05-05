@@ -127,8 +127,24 @@ int main() {
         char ch;
         printf("請輸入選項：");
         scanf(" %c", &ch);
-
-       
+		 // 步驟4：根據使用者選擇執行相應的操作
+        switch (ch) {
+            case 'a':
+            case 'A':
+                // 步驟3：顯示直角三角形
+                break;
+            case 'b':
+            case 'B':
+                // 步驟4：顯示乘法表
+                break;
+            case 'c':
+            case 'C':
+                // 步驟5：詢問是否重新輸入
+                break;
+            default:
+                break;
+        }
+        
     } while (1);
     
     
