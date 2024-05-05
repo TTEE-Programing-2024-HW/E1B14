@@ -66,6 +66,47 @@ int check() {
     return 0;
 }
 
+
+// 步驟3：螢幕主選單
+void step2(){
+	system("cls");
+    printf("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+    printf("*         Welcome to the Main         *\n");
+    printf("*                Menu                 *\n");
+    printf("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+    printf("*          a. 畫出直角三角形          *\n");
+    printf("*          b. 顯示乘法表              *\n");
+    printf("*          c. 結束                    *\n");
+    printf("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 int main() {
     // 顯示個人風格的畫面
     step1();
@@ -74,5 +115,9 @@ int main() {
     if(!check()) {
         return 0;
     }
-
+    
+    step2();
+    
+   
+    
 }
