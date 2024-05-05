@@ -168,6 +168,13 @@ void step5(){
         scanf(" %c", &cr);
          if (cr=='y'||cr=='Y'){
             return;// 回到步驟2
+        }        
+		else if(cr=='n'||cr=='N'){
+            printf("程式結束。\n");
+            exit(0);
+        }
+		else{
+            printf("錯誤的輸入！請重新輸入。\n");
         }
     }while(1);
 }
