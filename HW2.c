@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include <conio.h>
 
 // 步驟1：顯示個人風格的畫面
 void step1() {
@@ -84,13 +85,11 @@ void step2(){
 
 
 
-
-
-
-
-
-
-
+void step3() {
+    char input;
+    printf("請輸入一個字元（a到n之間）：");
+    scanf(" %c", &input);
+}
 
 
 
