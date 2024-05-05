@@ -89,6 +89,12 @@ void step3() {
     char input;
     printf("請輸入一個字元（a到n之間）：");
     scanf(" %c", &input);
+    
+    if (input < 'a' || input > 'n') {
+        printf("錯誤的輸入！請重新輸入。\n");
+        return;
+    }
+
 }
 
 
