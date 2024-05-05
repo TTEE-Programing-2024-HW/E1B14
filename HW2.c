@@ -157,6 +157,7 @@ int main() {
             case 'a':
             case 'A':
                 // 步驟3：顯示直角三角形
+                step3();
                 break;
             case 'b':
             case 'B':
