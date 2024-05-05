@@ -88,11 +88,11 @@ void step2(){
 void step3() {
     char ip;
     printf("請輸入一個字元（a到n之間）：");
+    fflush(stdin);
     scanf("%c",&ip);
     
     if (ip<'a'||ip>'n') {
         printf("錯誤的輸入！請重新輸入。\n");
-        return;
     }
     system("cls"); // 清除螢幕
 
@@ -117,6 +117,7 @@ void step3() {
     getch(); // 等待用戶輸入任意鍵
 
 }
+
 /*
   c
  bc
@@ -130,6 +131,7 @@ void step4(){
     // 請求使用者輸入一個 1 到 9 的整數
     do {
         printf("請輸入一個1到9的整數：");
+        fflush(stdin);
         scanf("%d", &n);
         if (n<1||n>9){
             printf("輸入錯誤！請重新輸入。\n");
@@ -158,7 +160,7 @@ void step4(){
 
 
 
-
+// 步驟5：詢問是否重新輸入
 
 
 
@@ -191,11 +193,11 @@ int main() {
         // 步驟2：清除螢幕，顯示主選單
         step2();
         // 步驟3：讀取使用者選擇
-        char ch;
+        char cha;
         printf("請輸入選項：");
-        scanf(" %c", &ch);
+        scanf("%c",&cha);
 		 //根據使用者選擇執行相應的操作
-        switch (ch) {
+        switch (cha) {
             case 'a':
             case 'A':
                 // 步驟3：顯示直角三角形
