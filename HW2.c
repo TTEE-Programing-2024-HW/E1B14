@@ -86,27 +86,28 @@ void step2(){
 
 
 void step3() {
-    char input;
+    char ip;
     printf("請輸入一個字元（a到n之間）：");
-    scanf(" %c", &input);
+    scanf(" %c", &ip);
     
-    if (input < 'a' || input > 'n') {
+    if (ip<'a'||ip>'n') {
         printf("錯誤的輸入！請重新輸入。\n");
         return;
     }
     system("cls"); // 清除螢幕
 
-    int rows = input - 'a' + 1; // 計算需要打印的行數
+    int ro=ip-'a'+1; // 計算需要打印的行數
     
-    
-    for (int i = 1; i <= rows; i++) {
+    int i=1,j=1;
+    for (i;i<=ro;i++) {
         // 打印空格
-        for (int j = 1; j <= rows - i; j++) {
+        for (j;j<=ro-i;j++) {
             printf("  ");
         }
         // 打印字母
-        for (char ch = input - i + 1; ch <= input; ch++) {
-            printf("%c ", ch);
+        char ch=ip-i+1;
+        for (ch;ch<=ip;ch++) {
+            printf("%c ",ch);
         }
         printf("\n");
     }
