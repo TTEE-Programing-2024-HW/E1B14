@@ -229,6 +229,7 @@ int main() {
             case 'c':
             case 'C':
                 // 步驟5：詢問是否重新輸入
+                step5();
                 break;
             default:
                 break;
