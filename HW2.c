@@ -94,6 +94,25 @@ void step3() {
         printf("錯誤的輸入！請重新輸入。\n");
         return;
     }
+    system("cls"); // 清除螢幕
+
+    int rows = input - 'a' + 1; // 計算需要打印的行數
+    
+    
+    for (int i = 1; i <= rows; i++) {
+        // 打印空格
+        for (int j = 1; j <= rows - i; j++) {
+            printf("  ");
+        }
+        // 打印字母
+        for (char ch = input - i + 1; ch <= input; ch++) {
+            printf("%c ", ch);
+        }
+        printf("\n");
+    }
+
+    printf("按任意鍵繼續...");
+    getch(); // 等待用戶輸入任意鍵
 
 }
 
