@@ -161,14 +161,15 @@ void step4(){
 
 
 // 步驟5：詢問是否重新輸入
-void step5() {
+void step5(){
     char cr;
-    do {
+    do{
         printf("Continue? (y/n): ");
         scanf(" %c", &cr);
-
-       
-    } while (1);
+         if (cr=='y'||cr=='Y'){
+            return;// 回到步驟2
+        }
+    }while(1);
 }
 
 
