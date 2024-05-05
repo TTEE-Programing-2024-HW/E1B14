@@ -119,7 +119,7 @@ void step3() {
 
 
 // 步驟4：顯示乘法表
-void step4() {
+void step4(){
     int n;
 
     // 請求使用者輸入一個 1 到 9 的整數
@@ -129,10 +129,20 @@ void step4() {
         if (n<1||n>9){
             printf("輸入錯誤！請重新輸入。\n");
         }
-    } while (n<1||n>9);
+    }while(n<1||n>9);
+    system("cls"); // 清除螢幕
+    // 顯示乘法表
+    printf("乘法表 %d*%d：\n",n,n);
+    int i=1,j=1;
+    for(i;i<=n;i++){
+        for(j=1;j<=n;j++){
+            printf("%d * %d =%d\t",i,j,i*j);
+        }
+        printf("\n");
+    }
 
-    
-    
+    printf("按任意鍵繼續...");
+    getch(); // 等待用戶輸入任意鍵
     
     
 }
@@ -189,6 +199,7 @@ int main() {
             case 'b':
             case 'B':
                 // 步驟4：顯示乘法表
+                step4();
                 break;
             case 'c':
             case 'C':
