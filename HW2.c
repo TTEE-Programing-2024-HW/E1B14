@@ -213,6 +213,7 @@ int main() {
         // 步驟3：讀取使用者選擇
         char cha;
         printf("請輸入選項：");
+        fflush(stdin);
         scanf("%c",&cha);
 		 //根據使用者選擇執行相應的操作
         switch (cha) {
@@ -233,6 +234,7 @@ int main() {
                 break;
             default:
             	printf("錯誤的選項！請重新輸入。\n");
+            	system("PAUSE");
                 break;
         }
     } while (1);
