@@ -82,7 +82,7 @@ void step2(){
 }
 
 // 步驟3：顯示座位表
-void step3(char seat[9][9]){
+void stepA(char seat[9][9]){
     printf("座位表：\n");
     printf("\\123456789\n");
     int i,j;
@@ -115,6 +115,40 @@ void rand_seat(char seat[9][9]){
         }
     }
 }
+
+
+// 安排座位
+void stepB(char seat[9][9], int num_seats){
+    int i,j;
+    while(1){
+        int row=rand()%9;
+        int col=rand()%(9-num_seats+1);
+
+        // 檢查連續的座位是否可用
+        int usable=1;
+        for(i=col;i<col+num_seats;i++){
+            if (seat[row][i]=='*'){
+                usable=0;
+                break;
+            }
+        }
+
+        // 如果座位可用，則安排座位並標記為建議座位@
+        if(usable){
+            for(i=col;i<col+num_seats;i++){
+                seat[row][i]='@';
+            }
+            break;
+        }
+    }
+}
+
+
+
+
+
+
+
 
 
 int main(){
