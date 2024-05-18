@@ -271,9 +271,10 @@ void stepC(char seat[9][9]) {
 
 
 
-int main(){
+int main() {
     char seat[9][9]; // 宣告座位表
     char choice; // 用於存儲用戶的選擇
+
     // 顯示個人風格的畫面
     step1();
 
@@ -282,59 +283,65 @@ int main(){
         return 0;
     }
 
-    // 顯示主選單（步驟2）
-    step2();
+    do {
+        // 顯示主選單（步驟2）
+        step2();
 
-    // 詢問用戶的選擇
-    printf("請選擇：");
-    fflush(stdin);
-    scanf("%c", &choice);
+        // 詢問用戶的選擇
+        printf("請選擇：");
+        fflush(stdin);
+        scanf("%c", &choice);
 
-    // 根據用戶的選擇執行相應的操作
-    switch (choice) {
-        case 'a':
-        	// 隨機產生已被預訂的座位
-    		rand_seat(seat);
-            // 顯示可用座位（步驟3）
-            stepA(seat);
-            break;
-        case 'b':
-            // 安排座位
-            printf("請問您需要幾個座位？(1~4)：");
-            int num_seats;
-            fflush(stdin);
-            scanf("%d", &num_seats);
-            if(num_seats>=1&&num_seats<=4){
+        // 根據用戶的選擇執行相應的操作
+        switch (choice) {
+            case 'a':
+                // 隨機產生已被預訂的座位
                 rand_seat(seat);
-				stepB(seat,num_seats);
-                stepA(seat); // 顯示安排座位後的座位表
-            }else{
-                printf("請輸入正確的座位數量(1~4)。\n");
-            }
-            break;
-        case 'c':
-            // 手動選擇座位
-            rand_seat(seat);
-            stepA(seat);
-            stepC(seat);
-            break;
-        case 'd':
-            // 退出程式
-            printf("Continue?(y/n):");
-            fflush(stdin);
-            char res;
-            scanf("%c",&res);
-            if(res=='y'){
-                main(); // 重新進入主函數
-            }else if(res=='n'){
-                return 0;
-            }else{
+                // 顯示可用座位（步驟3）
+                stepA(seat);
+                break;
+            case 'b':
+                // 安排座位
+                printf("請問您需要幾個座位？(1~4)：");
+                int num_seats;
+                fflush(stdin);
+                scanf("%d", &num_seats);
+                if (num_seats >= 1 && num_seats <= 4) {
+                    rand_seat(seat);
+                    stepB(seat, num_seats);
+                    stepA(seat); // 顯示安排座位後的座位表
+                    
+                    
+                } else {
+                    printf("請輸入正確的座位數量(1~4)。\n");
+                }
+                break;
+            case 'c':
+                // 手動選擇座位
+                rand_seat(seat);
+                stepA(seat);
+                stepC(seat);
+                break;
+            case 'd':
+                // 退出程式
+                printf("Continue? (y/n): ");
+                fflush(stdin);
+                char res;
+                scanf(" %c", &res);
+                if (res == 'y') {
+                    break; // 繼續循環，重新顯示主選單
+                } else if (res == 'n') {
+                    return 0;
+                } else {
+                    printf("錯誤選項。\n");
+                }
+                break;
+            default:
                 printf("錯誤選項。\n");
-            }
-            break;
-        default:
-            printf("錯誤選項。\n");
-            break;
-    }
+                break;
+        }
+    } while (1);
+
     return 0;
 }
+
