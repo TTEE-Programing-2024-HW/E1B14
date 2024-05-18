@@ -40,7 +40,7 @@ void step1(){
 	system("cls");
 }
 
-int code(){
+int check(){
     int pass;
     printf("請輸入4個數字的密碼：");
     scanf("%d", &pass);
@@ -86,9 +86,9 @@ void step3(char seat[9][9]) {
 
 
 // 隨機產生已被預訂的座位
-void ran_seat(char seat[9][9]) {
+void rand_seat(char seat[9][9]) {
     int co=0;
-    srand(123); // 將隨機種子設置為固定值
+    srand(123); // 如果未用此行rand的值會在開始時就決定為定值 
 
     // 隨機產生十個已被預訂的座位
     while(co<10){
@@ -101,4 +101,44 @@ void ran_seat(char seat[9][9]) {
     }
 }
 
+int main() {
+    char seat[9][9]; // 宣告座位表
+    char choice; // 用於存儲用戶的選擇
 
+     // 顯示個人風格的畫面
+    step1();
+
+    // 輸入密碼並檢查是否正確
+    if(!check()) {
+        return 0;
+    }
+        // 顯示主選單（步驟2）
+        step2();
+
+        // 詢問用戶的選擇
+        printf("請選擇：");
+        scanf("%c",&choice);
+
+        // 根據用戶的選擇執行相應的操作
+        switch (choice) {
+            case 'a':
+                // 顯示可用座位（步驟3）
+                step3(seat);
+                break;
+            case 'b':
+                // 安排座位
+                
+                break;
+            case 'c':
+                // 手動選擇座位
+                
+                break;
+            case 'd':
+                // 退出程式
+                return 0;
+            default:
+                printf("錯誤選項。\n");
+                break;
+        }
+		return 0;
+    }
