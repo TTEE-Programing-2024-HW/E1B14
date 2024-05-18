@@ -89,8 +89,11 @@ void step3(char seat[9][9]){
     for(i=8;i>=0;i--){
         printf("%d",i+1);
         for(j=0;j<9;j++){
-        	seat[i][j]='-';
-            printf("%c",seat[i][j]);
+            if(seat[i][j]=='*'){
+                printf("*");
+            } else {
+                printf("-");
+            }
         }
         printf("\n");
     }
@@ -112,6 +115,7 @@ void rand_seat(char seat[9][9]){
         }
     }
 }
+
 
 int main(){
     char seat[9][9];//«Å§i®y¦ìªí
