@@ -84,38 +84,39 @@ void step2(){
 // 步驟3：顯示座位表
 void step3(char seat[9][9]){
     printf("座位表：\n");
+    printf("\\123456789\n");
     int i,j;
-    for(i=0;i<9;i++){
-        for(j=0;j<9;j++) {
+    for(i=8;i>=0;i--){
+        printf("%d",i+1);
+        for(j=0;j<9;j++){
+        	seat[i][j]='-';
             printf("%c",seat[i][j]);
         }
         printf("\n");
     }
-    printf("按任意鍵繼續...");
-    system("pause"); // 等待用戶按下任意鍵
+    system("pause"); //等待用戶按下任意鍵
 }
 
-// 隨機產生已被預訂的座位
+//隨機產生已被預訂的座位
 void rand_seat(char seat[9][9]){
     int co=0;
-    // 使用 rand 函數的返回值作為種子
+    //使用 rand 函數的返回值作為種子
     srand(123);
-    // 隨機產生十個已被預訂的座位
+    //隨機產生十個已被預訂的座位
     while(co<10){
-        int x=rand()%9;// 生成隨機行號
-        int y=rand()%9;// 生成隨機列號
+        int x=rand()%9;//生成隨機行號
+        int y=rand()%9;//生成隨機列號
         if (seat[x][y]!='*'){
-            seat[x][y]='*';// 標記座位為已預訂
+            seat[x][y]='*';//標記座位為已預訂
             co++;
         }
     }
 }
 
-
-int main() {
-    char seat[9][9]; // 宣告座位表
-    char choice; // 用於存儲用戶的選擇
-
+int main(){
+    char seat[9][9];//宣告座位表
+    char choice;//用於存儲用戶的選擇
+    
     // 顯示個人風格的畫面
     step1();
 
@@ -124,12 +125,12 @@ int main() {
         return 0;
     }
 
-    // 隨機產生已被預訂的座位
-    rand_seat(seat);
-
     // 顯示主選單（步驟2）
     step2();
 
+    //隨機產生已被預訂的座位
+    rand_seat(seat);
+    
     // 詢問用戶的選擇
     printf("請選擇：");
     fflush(stdin);
@@ -143,9 +144,11 @@ int main() {
             break;
         case 'b':
             // 安排座位
+            
             break;
         case 'c':
             // 手動選擇座位
+            
             break;
         case 'd':
             // 退出程式
@@ -157,4 +160,3 @@ int main() {
 
     return 0;
 }
-
