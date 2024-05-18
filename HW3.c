@@ -320,7 +320,18 @@ int main(){
             break;
         case 'd':
             // 退出程式
-            return 0;
+            printf("Continue?(y/n):");
+            fflush(stdin);
+            char res;
+            scanf("%c",&res);
+            if(res=='y'){
+                main(); // 重新進入主函數
+            }else if(res=='n'){
+                return 0;
+            }else{
+                printf("錯誤選項。\n");
+            }
+            break;
         default:
             printf("錯誤選項。\n");
             break;
