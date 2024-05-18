@@ -86,17 +86,19 @@ void step3(char seat[9][9]) {
 
 
 // 隨機產生已被預訂的座位
-void rand_seat(char seat[9][9]) {
+void ran_seat(char seat[9][9]) {
     int co=0;
     srand(123); // 將隨機種子設置為固定值
 
     // 隨機產生十個已被預訂的座位
     while(co<10){
-        int row=rand()%9; // 生成隨機行號
-        int col=rand()%9; // 生成隨機列號
-        if (seat[row][col]!='*'){
-            seat[row][col]='*'; // 標記座位為已預訂
+        int x=rand()%9; // 生成隨機行號
+        int y=rand()%9; // 生成隨機列號
+        if (seat[x][y]!='*'){
+            seat[x][y]='*'; // 標記座位為已預訂
             co++;
         }
     }
 }
+
+
