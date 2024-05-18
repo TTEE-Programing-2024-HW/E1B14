@@ -40,7 +40,7 @@ void step1(){
 	system("cls");
 }
 
-int step2(){
+int code(){
     int pass;
     printf("請輸入4個數字的密碼：");
     scanf("%d", &pass);
@@ -53,5 +53,19 @@ int step2(){
         printf("%c", '\a');
         return 0;
     }
+}
+
+// 步驟2：螢幕主選單
+void step2(){
+	system("cls");
+    printf("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+    printf("*         Welcome to the Main         *\n");
+    printf("*                Menu                 *\n");
+    printf("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+    printf("*          a. Available seats         *\n");
+    printf("*          b. Arrange for you         *\n");
+    printf("*          c. Choose by yourself      *\n");
+    printf("*          d. Exit                    *\n");
+    printf("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
 }
 
