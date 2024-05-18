@@ -120,28 +120,62 @@ void rand_seat(char seat[9][9]){
 // 安排座位
 void stepB(char seat[9][9],int num_seats){
     int i,j;
-    while(1){
-        int row=rand()%9;
-        int col=rand()%(9-num_seats+1);
 
-        // 檢查連續的座位是否可用
-        int usable=1;
-        for(i=col;i<col+num_seats;i++){
-            if (seat[row][i]=='*'){
-                usable=0;
+    // 如果需要的座位數大於4，或小於1，則提示錯誤並返回
+    if (num_seats>4||num_seats<1){
+        printf("請輸入正確的座位數量(1~4)。\n");
+        return;
+    }
+
+    // 一般情況下，隨機選擇連續座位
+    if(num_seats <= 3){
+        while(1){
+            int row=rand()%9;
+            int col=rand()%(9-num_seats+1);
+
+            // 檢查連續的座位是否可用
+            int usable=1;
+            for(i=col;i<col+num_seats;i++){
+                if(seat[row][i]=='*'){
+                    usable=0;
+                    break;
+                }
+            }
+
+            // 如果座位可用，則安排座位並標記為建議座位@
+            if(usable){
+                for(i=col;i<col+num_seats;i++){
+                    seat[row][i]='@';
+                }
                 break;
             }
         }
+    }else{// 如果需要的座位數為4
+        // 在同一行上找到4個連續的座位
+        while(1){
+            int row=rand()%9;
+            int col=rand()%(9-num_seats+1);
 
-        // 如果座位可用，則安排座位並標記為建議座位@
-        if(usable){
+            // 檢查連續的座位是否可用
+            int usable=1;
             for(i=col;i<col+num_seats;i++){
-                seat[row][i]='@';
+                if(seat[row][i]=='*'){
+                    usable=0;
+                    break;
+                }
             }
-            break;
+
+            // 如果座位可用，則安排座位並標記為建議座位@
+            if(usable){
+                for(i=col;i<col+num_seats;i++){
+                    seat[row][i]='@';
+                }
+                break;
+            }
         }
     }
 }
+
 
 
 
@@ -182,13 +216,14 @@ int main(){
             break;
         case 'b':
             // 安排座位
-            int num_seats;
             printf("請問您需要幾個座位？(1~4)：");
+            int num_seats;
             scanf("%d", &num_seats);
-            if (num_seats >= 1 && num_seats <= 4) {
-                stepB(seat, num_seats);
+            if(num_seats>=1&&num_seats<=4){
                 stepA(seat);
-            } else {
+                stepB(seat,num_seats);
+                stepA(seat); // 顯示安排座位後的座位表
+            }else{
                 printf("請輸入正確的座位數量(1~4)。\n");
             }
             break;
@@ -202,8 +237,5 @@ int main(){
             printf("錯誤選項。\n");
             break;
     }
-
     return 0;
 }
-
-
