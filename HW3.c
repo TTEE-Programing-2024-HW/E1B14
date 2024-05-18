@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include <stdlib.h>
+#include<stdlib.h>
 
 // 步驟1：顯示個人風格的畫面
 void step1() {
@@ -118,7 +118,7 @@ void rand_seat(char seat[9][9]){
 
 
 // 安排座位
-void stepB(char seat[9][9], int num_seats){
+void stepB(char seat[9][9],int num_seats){
     int i,j;
     while(1){
         int row=rand()%9;
@@ -152,8 +152,8 @@ void stepB(char seat[9][9], int num_seats){
 
 
 int main(){
-    char seat[9][9];//宣告座位表
-    char choice;//用於存儲用戶的選擇
+    char seat[9][9]; // 宣告座位表
+    char choice; // 用於存儲用戶的選擇
     
     // 顯示個人風格的畫面
     step1();
@@ -166,7 +166,7 @@ int main(){
     // 顯示主選單（步驟2）
     step2();
 
-    //隨機產生已被預訂的座位
+    // 隨機產生已被預訂的座位
     rand_seat(seat);
     
     // 詢問用戶的選擇
@@ -178,15 +178,22 @@ int main(){
     switch (choice) {
         case 'a':
             // 顯示可用座位（步驟3）
-            step3(seat);
+            stepA(seat);
             break;
         case 'b':
             // 安排座位
-            
+            int num_seats;
+            printf("請問您需要幾個座位？(1~4)：");
+            scanf("%d", &num_seats);
+            if (num_seats >= 1 && num_seats <= 4) {
+                stepB(seat, num_seats);
+                stepA(seat);
+            } else {
+                printf("請輸入正確的座位數量(1~4)。\n");
+            }
             break;
         case 'c':
             // 手動選擇座位
-            
             break;
         case 'd':
             // 退出程式
@@ -198,3 +205,5 @@ int main(){
 
     return 0;
 }
+
+
