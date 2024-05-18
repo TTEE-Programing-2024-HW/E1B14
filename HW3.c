@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include <time.h>
 
 // 步驟1：顯示個人風格的畫面
 void step1() {
@@ -83,7 +84,7 @@ void step2(){
 
 // 步驟3：顯示座位表
 void stepA(char seat[9][9]){
-    printf("座位表：\n");
+	printf("座位表：\n");
     printf("\\123456789\n");
     int i,j;
     for(i=8;i>=0;i--){
@@ -91,7 +92,7 @@ void stepA(char seat[9][9]){
         for(j=0;j<9;j++){
             if(seat[i][j]=='*'){
                 printf("*");
-            } else {
+            }else{
                 printf("-");
             }
         }
@@ -104,13 +105,17 @@ void stepA(char seat[9][9]){
 void rand_seat(char seat[9][9]){
     int co=0;
     //使用 rand 函數的返回值作為種子
-    srand(123);
+    srand((unsigned) time(NULL));
     //隨機產生十個已被預訂的座位
     while(co<10){
         int x=rand()%9;//生成隨機行號
         int y=rand()%9;//生成隨機列號
         if (seat[x][y]!='*'){
             seat[x][y]='*';//標記座位為已預訂
+            co++;
+        }
+        if (seat[x][y]=='@'){
+            seat[x][y]='@';//標記座位為已預訂
             co++;
         }
     }
@@ -120,22 +125,20 @@ void rand_seat(char seat[9][9]){
 // 安排座位
 void stepB(char seat[9][9],int num_seats){
     int i,j;
-
     // 如果需要的座位數大於4，或小於1，則提示錯誤並返回
     if (num_seats>4||num_seats<1){
         printf("請輸入正確的座位數量(1~4)。\n");
         return;
     }
-
     // 一般情況下，隨機選擇連續座位
-    if(num_seats <= 3){
+    if(num_seats<=3){
         while(1){
             int row=rand()%9;
-            int col=rand()%(9-num_seats+1);
+            int col=rand()%(10-num_seats);
 
             // 檢查連續的座位是否可用
             int usable=1;
-            for(i=col;i<col+num_seats;i++){
+            for(i=col;i<col+num_seats+1;i++){
                 if(seat[row][i]=='*'){
                     usable=0;
                     break;
@@ -144,7 +147,7 @@ void stepB(char seat[9][9],int num_seats){
 
             // 如果座位可用，則安排座位並標記為建議座位@
             if(usable){
-                for(i=col;i<col+num_seats;i++){
+                for(i=col;i<col+num_seats+1;i++){
                     seat[row][i]='@';
                 }
                 break;
@@ -158,7 +161,7 @@ void stepB(char seat[9][9],int num_seats){
 
             // 檢查連續的座位是否可用
             int usable=1;
-            for(i=col;i<col+num_seats;i++){
+            for(i=col;i<col+num_seats+1;i++){
                 if(seat[row][i]=='*'){
                     usable=0;
                     break;
@@ -167,7 +170,7 @@ void stepB(char seat[9][9],int num_seats){
 
             // 如果座位可用，則安排座位並標記為建議座位@
             if(usable){
-                for(i=col;i<col+num_seats;i++){
+                for(i=col;i<col+num_seats+1;i++){
                     seat[row][i]='@';
                 }
                 break;
@@ -188,7 +191,6 @@ void stepB(char seat[9][9],int num_seats){
 int main(){
     char seat[9][9]; // 宣告座位表
     char choice; // 用於存儲用戶的選擇
-    
     // 顯示個人風格的畫面
     step1();
 
@@ -200,9 +202,6 @@ int main(){
     // 顯示主選單（步驟2）
     step2();
 
-    // 隨機產生已被預訂的座位
-    rand_seat(seat);
-    
     // 詢問用戶的選擇
     printf("請選擇：");
     fflush(stdin);
@@ -211,6 +210,8 @@ int main(){
     // 根據用戶的選擇執行相應的操作
     switch (choice) {
         case 'a':
+        	// 隨機產生已被預訂的座位
+    		rand_seat(seat);
             // 顯示可用座位（步驟3）
             stepA(seat);
             break;
@@ -221,7 +222,8 @@ int main(){
             scanf("%d", &num_seats);
             if(num_seats>=1&&num_seats<=4){
                 stepA(seat);
-                stepB(seat,num_seats);
+                rand_seat(seat);
+				stepB(seat,num_seats);
                 stepA(seat); // 顯示安排座位後的座位表
             }else{
                 printf("請輸入正確的座位數量(1~4)。\n");
