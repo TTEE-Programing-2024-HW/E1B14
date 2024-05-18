@@ -217,6 +217,58 @@ void stepB(char seat[9][9],int num_seats){
 
 
 
+// 手動選擇座位
+void stepC(char seat[9][9]) {
+    int row,col;
+    char input[10];
+    int valid=1;
+
+    while(1){
+        printf("請輸入座位（如1-2代表[列1,行2]）：");
+        fflush(stdin);
+        scanf("%s",input);
+
+        if (sscanf(input,"%d-%d",&row,&col)!=2||row<1||row>9||col<1||col>9||seat[row-1][col-1]=='*'||seat[row-1][col-1]=='@') {
+            printf("格式錯誤或座位已被佔用，請重新輸入。\n");
+            continue;
+        }
+
+        seat[row-1][col-1]='@';
+
+        // 再次確認
+        printf("是否繼續選擇座位？（y/n）：");
+        fflush(stdin);
+        char cont;
+        scanf("%c",&cont);
+        if(cont=='n'||cont=='N')break;
+    }
+
+    // 顯示排位結果
+    stepA(seat);
+    // 確認後將@變為*
+    int i,j;
+    for(i=0;i<9;i++){
+        for(j=0;j<9;j++){
+            if(seat[i][j]=='@'){
+                seat[i][j]='*';
+            }
+        }
+    }
+    // 回到主選單
+    system("cls");
+    step2();
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 int main(){
@@ -262,7 +314,9 @@ int main(){
             break;
         case 'c':
             // 手動選擇座位
-            
+            rand_seat(seat);
+            stepA(seat);
+            stepC(seat);
             break;
         case 'd':
             // 退出程式
