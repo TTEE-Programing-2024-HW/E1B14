@@ -48,7 +48,7 @@ int check() {
 
     do {
         printf("請輸入4個數字的密碼：");
-        fflush(stdin);
+        fflush(st7din);
         scanf("%d", &pass);
         // 檢查密碼是否正確
         if(pass == 2024) {
@@ -291,12 +291,13 @@ int main() {
         printf("請選擇：");
         fflush(stdin);
         scanf("%c", &choice);
-
+		
+		// 隨機產生已被預訂的座位
+                rand_seat(seat);
+                
         // 根據用戶的選擇執行相應的操作
         switch (choice) {
             case 'a':
-                // 隨機產生已被預訂的座位
-                rand_seat(seat);
                 // 顯示可用座位（步驟3）
                 stepA(seat);
                 break;
@@ -305,11 +306,10 @@ int main() {
                 printf("請問您需要幾個座位？(1~4)：");
                 int num_seats;
                 fflush(stdin);
-                scanf("%d", &num_seats);
-                if (num_seats >= 1 && num_seats <= 4) {
-                    rand_seat(seat);
-                    stepB(seat, num_seats);
-                    stepA(seat); // 顯示安排座位後的座位表
+                scanf("%d",&num_seats);
+                if (num_seats>=1&&num_seats<=4){
+                    stepB(seat,num_seats);
+                    stepA(seat); //顯示安排座位後的座位表
                     int i,j;
                     for(i=0;i<9;i++){
         				for(j=0;j<9;j++){
@@ -318,13 +318,12 @@ int main() {
            					}	
         				}
     				}
-                } else {
+                }else{
                     printf("請輸入正確的座位數量(1~4)。\n");
                 }
                 break;
             case 'c':
                 // 手動選擇座位
-                rand_seat(seat);
                 stepA(seat);
                 stepC(seat);
                 break;
@@ -333,12 +332,12 @@ int main() {
                 printf("Continue? (y/n): ");
                 fflush(stdin);
                 char res;
-                scanf(" %c", &res);
-                if (res == 'y') {
+                scanf("%c",&res);
+                if(res=='y'){
                     break; // 繼續循環，重新顯示主選單
-                } else if (res == 'n') {
+                }else if(res=='n'){
                     return 0;
-                } else {
+                }else{
                     printf("錯誤選項。\n");
                 }
                 break;
@@ -351,3 +350,9 @@ int main() {
     return 0;
 }
 
+/*
+ 我覺得這次的程式設計很困難，尤其是B部分我修改了一次又一次從一開始的字串多出@到@全部消失，再到多一個@少一個@，好不容易做完
+ 1,2,3的輸入，又發現4更麻煩前前後後花了將近一下午的時間，後面的switch又有新的問題，而且好像是C的問題，我問了同學、GPT都得到了
+ 沒有特別大的錯誤，最後我把int跟printf上下順序交換才， 
+ 
+*/
