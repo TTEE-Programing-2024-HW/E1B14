@@ -1,58 +1,70 @@
 #include<stdio.h>
 #include <stdlib.h>
 
-// 步驟1：顯示個人風格的畫面，輸入密碼
-void step1(){
-	printf("E1B14鄭力允                                                    \n");
-	printf("             *                                                 \n");
-	printf("            * **                                               \n");
-	printf("            *   **                                             \n");
-	printf("           **    ***                                           \n");
-	printf("           *       **                                          \n");
-	printf("           *       ***                                         \n");
-	printf("           *     ***************                               \n");
-	printf("           *   **         * *******                            \n");
-	printf("           *****                  *****                        \n");
-	printf("           ***                        ******                   \n");
-	printf("           **                               ***                \n");
-	printf("          **     ******                       *****            \n");
-	printf("         **     *  *  **                       **  *****       \n");
-	printf("        **      * ******             ****       **      ****   \n");
-	printf("       **       *  *****           *********     **      ***** \n");
-	printf("      **         *****  *******   ****  ** **     **   **      \n");
-	printf("     **                ********    ******  ***     *****       \n");
-	printf("    **                   *******    ****  **         **        \n");
-	printf("    *                     ******      *****          ***       \n");
-	printf("    *                    ***                          **       \n");
-	printf("    ***               **** **                         **       \n");
-	printf("     **            ***      ***                       *        \n");
-	printf("      **                      *                       *        \n");
-	printf("       **                                            **        \n");
-	printf("        *                                      --   **         \n");
-	printf("        *                                  ---   **            \n");
-	printf("       **                            ------      **            \n");
-	printf("      ***                    --------             *            \n");
-	printf("     ****                                         *            \n");
-	printf("    ****                                          **           \n");
-	printf("   ****                                             ********   \n");
-	printf(" **** **                                                  ***  \n");
-	system("PAUSE");
-	system("cls");
+// 步驟1：顯示個人風格的畫面
+void step1() {
+    printf("E1B14鄭力允                                                    \n");
+    printf("             *                                                 \n");
+    printf("            * **                                               \n");
+    printf("            *   **                                             \n");
+    printf("           **    ***                                           \n");
+    printf("           *       **                                          \n");
+    printf("           *       ***                                         \n");
+    printf("           *     ***************                               \n");
+    printf("           *   **         * *******                            \n");
+    printf("           *****                  *****                        \n");
+    printf("           ***                        ******                   \n");
+    printf("           **                               ***                \n");
+    printf("          **     ******                       *****            \n");
+    printf("         **     *  *  **                       **  *****       \n");
+    printf("        **      * ******             ****       **      ****   \n");
+    printf("       **       *  *****           *********     **      ***** \n");
+    printf("      **         *****  *******   ****  ** **     **   **      \n");
+    printf("     **                ********    ******  ***     *****       \n");
+    printf("    **                   *******    ****  **         **        \n");
+    printf("    *                     ******      *****          ***       \n");
+    printf("    *                    ***                          **       \n");
+    printf("    ***               **** **                         **       \n");
+    printf("     **            ***      ***                       *        \n");
+    printf("      **                      *                       *        \n");
+    printf("       **                                            **        \n");
+    printf("        *                                      --   **         \n");
+    printf("        *                                  ---   **            \n");
+    printf("       **                            ------      **            \n");
+    printf("      ***                    --------             *            \n");
+    printf("     ****                                         *            \n");
+    printf("    ****                                          **           \n");
+    printf("   ****                                             ********   \n");
+    printf(" **** **                                                  ***  \n");
+    system("PAUSE");
+    system("cls");
 }
 
-int check(){
+// 輸入並檢查密碼是否正確
+int check() {
     int pass;
-    printf("請輸入4個數字的密碼：");
-    scanf("%d", &pass);
-    // 檢查密碼是否正確
-    if(pass==2024){
-        printf("密碼正確！歡迎使用本程式。\n");
-        return 1;
-    } else {
-        printf("警告：密碼錯誤，程式即將結束。\n");
-        printf("%c", '\a');
-        return 0;
-    }
+    int time = 0; // 計算輸入密碼的次數
+
+    do {
+        printf("請輸入4個數字的密碼：");
+        fflush(stdin);
+        scanf("%d", &pass);
+        // 檢查密碼是否正確
+        if(pass == 2024) {
+            printf("密碼正確！歡迎使用本程式。\n");
+            return 1;
+        }
+		else {
+            time++;
+            printf("警告：密碼錯誤%d次\n",time);
+            if(time==3) {
+                printf("輸入錯誤超過三次，程式即將結束。\n");
+                return 0;
+            }
+        }
+    }while(time < 3);
+
+    return 0;
 }
 
 // 步驟2：螢幕主選單
@@ -117,6 +129,7 @@ int main() {
 
         // 詢問用戶的選擇
         printf("請選擇：");
+        fflush(stdin);
         scanf("%c",&choice);
 
         // 根據用戶的選擇執行相應的操作
