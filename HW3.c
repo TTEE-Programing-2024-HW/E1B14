@@ -310,8 +310,14 @@ int main() {
                     rand_seat(seat);
                     stepB(seat, num_seats);
                     stepA(seat); // 顯示安排座位後的座位表
-                    
-                    
+                    int i,j;
+                    for(i=0;i<9;i++){
+        				for(j=0;j<9;j++){
+            				if(seat[i][j]=='@'){
+                				seat[i][j]='*';
+           					}	
+        				}
+    				}
                 } else {
                     printf("請輸入正確的座位數量(1~4)。\n");
                 }
