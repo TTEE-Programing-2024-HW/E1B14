@@ -69,3 +69,19 @@ void step2(){
     printf("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
 }
 
+// 步驟3：
+void step3(char seat[9][9]) {
+    printf("座位表：\n");
+    int i;
+    for(i=0;i<9;i++){
+    	int j;
+        for (j=0;j<9;j++){
+            printf("%c",seat[i][j]);
+        }
+        printf("\n");
+    }
+    printf("按任意鍵繼續...");
+    system("pause"); // 等待用戶按下任意鍵
+}
+
+
