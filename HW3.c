@@ -120,7 +120,7 @@ void rand_seat(char seat[9][9]){
         for(i=0;i<9;i++){
         	for(j=0;j<9;j++){
         		if(seat[i][j]=='@'){
-            	seat[i][j]='-';
+            	seat[i][j]='*';
             	co++;
 				}
         	}
@@ -282,7 +282,8 @@ int main() {
     if (!check()) {
         return 0;
     }
-
+    // 隨機產生已被預訂的座位
+        rand_seat(seat);
     do {
         // 顯示主選單（步驟2）
         step2();
@@ -292,8 +293,7 @@ int main() {
         fflush(stdin);
         scanf("%c", &choice);
 		
-		// 隨機產生已被預訂的座位
-                rand_seat(seat);
+		
                 
         // 根據用戶的選擇執行相應的操作
         switch (choice) {
