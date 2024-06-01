@@ -181,9 +181,6 @@ void c(){
 }
 
 //d.按照平均成績進行排名
-
-
-// 成績排名
 void d(){
     // 排序
     int i,j;
@@ -205,18 +202,41 @@ void d(){
     system("cls");
 }
 
-
-
-
-
-
-
-
-
-
-
-
 //e.確認是否離開系統
+
+void e(){
+    char ch;
+    printf("確定離開？(y/n):");
+    while(1){
+    	fflush(stdin);
+        scanf("%c",&ch);
+        if(ch=='y'||ch=='Y'){
+            exit(0);//直接結束程式 
+        }else if(ch=='n'||ch=='N'){
+            system("cls");
+            break;
+        }else{
+            printf("無效輸入，請重新輸入 (y/n): ");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //主函數
  
@@ -257,7 +277,7 @@ int main(){
             case 'e':
             	system("cls");
                 //確認是否離開系統
-                //還沒好
+                e();
                 break;
             default:
                 printf("請重新選擇。\n");
