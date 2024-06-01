@@ -67,7 +67,7 @@ int check(){
 }
 
 // 步驟2：螢幕主選單
-void step3(){
+void step2(){
     printf("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
     printf("*         Welcome to the Main         *\n");
     printf("*                Menu                 *\n");
@@ -80,4 +80,59 @@ void step3(){
     printf("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
 }
 
+//a.輸入學生成績
 
+//b.顯示所有學生成績
+
+//c.搜尋特定學生的成績
+
+//d.按照平均成績進行排名
+
+//e.確認是否離開系統
+
+//主函數
+ 
+int main(){
+    step1();
+    if (!check()){
+        return 0;
+    }
+
+    char cho;
+    while(1){
+        step2();
+        printf("請選擇一個選項：");
+        fflush(stdin);
+        scanf("%c",&cho);
+
+        switch(cho){
+            case 'a':
+                system("cls");
+                //輸入學生成績
+                break;
+            case 'b':
+                system("cls");
+                //顯示所有學生成績
+                break;
+            case 'c':
+                system("cls");
+                //搜尋特定學生的成績
+                break;
+            case 'd':
+                system("cls");
+                //按照平均成績進行排名
+                break;
+            case 'e':
+            	system("cls");
+                //確認是否離開系統
+                break;
+            default:
+                printf("請重新選擇。\n");
+                system("PAUSE");
+                system("cls");
+                break;
+        }
+    }
+
+    return 0;
+}
