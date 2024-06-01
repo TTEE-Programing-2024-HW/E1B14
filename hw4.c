@@ -5,7 +5,7 @@
 // 定義學生結構陣列 
 struct student {
     char name[50];
-    int num[6];
+    int num;
     int mat;
     int phy;
     int eng;
@@ -111,24 +111,29 @@ void a() {
         scanf("%s",students[i].name);
         printf("輸入學號：");
         scanf("%d",&students[i].num);
+        if(students[i].num<99999||students[i].num>1000000){
+        	printf("輸入錯誤，請重新輸入。\n");
+        	i--; 
+        	continue;
+		}
         printf("輸入數學成績：");
         scanf("%d",&students[i].mat);
         if(students[i].mat<0||students[i].mat>100){
-        	printf("輸入錯誤，請重新輸入：\n");
+        	printf("輸入錯誤，請重新輸入。\n");
         	i--; 
         	continue;
 		}
         printf("輸入物理成績：");
         scanf("%d",&students[i].phy);
         if(students[i].phy<0||students[i].phy>100){
-        	printf("輸入錯誤，請重新輸入：\n");
+        	printf("輸入錯誤，請重新輸入。\n");
         	i--;
         	continue;
 		}
         printf("輸入英文成績：");
         scanf("%d",&students[i].eng);
         if(students[i].eng<0||students[i].eng>100){
-        	printf("輸入錯誤，請重新輸入：\n");
+        	printf("輸入錯誤，請重新輸入。\n");
         	i--;
         	continue;
 		}
@@ -154,13 +159,26 @@ void b(){
     system("cls");
 }
 
-
-
-
-
-
-
 //c.搜尋特定學生的成績
+void c(){
+    char search[50];
+    printf("請輸入要搜尋的學生姓名：");
+    scanf("%s",search);
+    int i;
+    for(i=0;i<stcount;i++){
+        if(strcmp(students[i].name,search)==0){//strcmp(a,b)比較兩個字串是否相等(用ASCII依序比較大小)，相等就回傳0
+        	printf("姓名:%s, 學號:%d, 數學:%d, 物理:%d, 英文:%d, 平均成績:%.1f\n",students[i].name,students[i].num,students[i].mat,students[i].phy,students[i].eng,students[i].avg);
+            printf("按任意鍵返回主選單。\n");
+            system("PAUSE");
+            system("cls");
+            return;
+        }
+    }
+    printf("找不到學生資料。\n");
+    printf("按任意鍵返回主選單。\n");
+    system("PAUSE");
+    system("cls");
+}
 
 //d.按照平均成績進行排名
 
@@ -195,7 +213,7 @@ int main(){
             case 'c':
                 system("cls");
                 //搜尋特定學生的成績
-                //還沒好 
+                c();
                 break;
             case 'd':
                 system("cls");
