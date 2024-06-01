@@ -3,7 +3,7 @@
 #include<string.h>
 
 // 定義學生結構陣列 
-struct student {
+struct student{
     char name[50];
     int num;
     int mat;
@@ -182,6 +182,40 @@ void c(){
 
 //d.按照平均成績進行排名
 
+
+// 成績排名
+void d(){
+    // 排序
+    int i,j;
+    for(i=0;i<stcount-1;i++){
+        for(j=i+1;j<stcount;j++){
+            if(students[i].avg<students[j].avg){//交換i跟j 
+                struct student temp=students[i];//設暫存 
+                students[i]=students[j];
+                students[j]=temp;
+            }
+        }
+    }
+    printf("成績排名如下：\n");
+    for(i=0;i<stcount;i++){
+        printf("姓名: %s, 學號: %d, 平均成績: %.1f\n",students[i].name,students[i].num,students[i].avg);
+    }
+    printf("按任意鍵返回主選單。\n");
+    system("PAUSE");
+    system("cls");
+}
+
+
+
+
+
+
+
+
+
+
+
+
 //e.確認是否離開系統
 
 //主函數
@@ -218,7 +252,7 @@ int main(){
             case 'd':
                 system("cls");
                 //按照平均成績進行排名
-                //還沒好
+                d();
                 break;
             case 'e':
             	system("cls");
